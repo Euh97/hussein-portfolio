@@ -1,5 +1,13 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const contactPageUrl = document.getElementById("contact-page-url");
+if (
+  contactPageUrl &&
+  (window.location.protocol === "http:" || window.location.protocol === "https:")
+) {
+  contactPageUrl.value = window.location.href.split("#")[0];
+}
+
 const typingHeading = document.querySelector("[data-typing]");
 const typingMain = typingHeading?.querySelector(".typing-main");
 const typingAccent = typingHeading?.querySelector(".typing-accent");
