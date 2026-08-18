@@ -1,4 +1,8 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
 const contactPageUrl = document.getElementById("contact-page-url");
 if (
@@ -38,6 +42,45 @@ if (typingHeading && typingMain && typingAccent) {
       renderHeadline();
       if (index >= headline.length) window.clearInterval(timer);
     }, 85);
+  }
+}
+
+const strengthMarquee = document.querySelector("[data-strength-marquee]");
+
+if (strengthMarquee) {
+  const valuesMarquee = strengthMarquee.querySelector(".strength-marquee");
+  const strengthTrack = strengthMarquee.querySelector(".strength-track");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (valuesMarquee && strengthTrack && !reducedMotion) {
+    let currentRate = 1;
+    let targetRate = 1;
+
+    const updatePlaybackRate = () => {
+      const animation = strengthTrack.getAnimations
+        ? strengthTrack.getAnimations()[0]
+        : null;
+
+      currentRate += (targetRate - currentRate) * 0.08;
+
+      if (animation) {
+        animation.playbackRate = currentRate;
+      }
+
+      window.requestAnimationFrame(updatePlaybackRate);
+    };
+
+    valuesMarquee.addEventListener("pointerenter", () => {
+      targetRate = 0.42;
+    });
+
+    valuesMarquee.addEventListener("pointerleave", () => {
+      targetRate = 1;
+    });
+
+    window.requestAnimationFrame(updatePlaybackRate);
   }
 }
 
