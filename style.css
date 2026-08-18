@@ -863,12 +863,9 @@ svg {
 }
 
 .skill-list span {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
   border: 1px solid rgba(72, 223, 145, 0.25);
   border-radius: 7px;
-  padding: 13px 17px;
+  padding: 16px 21px;
   background: rgba(72, 223, 145, 0.055);
   color: #d9f8e7;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -877,20 +874,8 @@ svg {
 }
 
 .skill-list span::before {
-  display: inline-grid;
-  min-width: 25px;
-  height: 25px;
-  padding-inline: 4px;
-  place-items: center;
-  border: 1px solid rgba(72, 223, 145, 0.32);
-  border-radius: 6px;
-  background: rgba(72, 223, 145, 0.08);
   color: var(--green);
-  content: attr(data-icon);
-  font-size: 0.58rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  content: "# ";
 }
 
 .contact-section {
